@@ -12,12 +12,34 @@ function App() {
     setShowMore(!showMore);
   }
 
-  function handleClick() {
+  // function handleClick() {
+  //   setIndex(index + 1);
+  // }
+  // function minusClick() {
+  //   setIndex(index - 1);
+  // }
+
+  function increaseIndex() {
+    /**
+     * useStateのindexが5番目(最後のindex)だったら何も処理せず終了させる
+     * **/
+    if (index === movieList.length - 1) {
+        return;
+    }
     setIndex(index + 1);
-  }
-  function minusClick() {
+}
+function decreaseIndex() {
+    /**
+     * useStateのindexが0番目(最初ののindex)だったら何も処理せず終了させる
+     * **/
+    if (index === 0) {
+        return;
+    }
     setIndex(index - 1);
-  }
+}
+// function handleClick(i) {
+//     setIndex(i);
+// }
 
   let movie = movieList[index];
 
@@ -28,8 +50,8 @@ function App() {
           {showMore ? 'Hide' : 'Show'} details
           </button>
         <div className="btns">
-          <button onClick={minusClick}>Back</button>
-          <button onClick={handleClick} style={{marginLeft:10}}>Next</button>
+          <button onClick={decreaseIndex}>Back</button>
+          <button onClick={increaseIndex} style={{marginLeft:10}}>Next</button>
         </div>
       </header>
         <h2>{movie.title}</h2>
